@@ -31,9 +31,13 @@ To get the hash string out, use `p.hash` or `str(p)`.
 Note that generating a password hash for the same password will result in
 different hashes every time:
 
-    >>> p = Password.create('my secret password')
-    >>> print(p)
-    $2a$04$MPRwrINhaCvXVlQsB/DzLu9ZxhUY/xfTsxERDT8Q.sWl9LiC72pS2
+    >>> for i in range(0, 3):
+    ...     p = Password.create('my secret password')
+    ...     print(p)
+    ...
+    $2a$04$eddbs9i/v3xuVei.d0CPaOL7g3spzxJ/z0.naES1jjI77kFpinvfK
+    $2a$04$E0hc67qJ8A1xOf4IdkKpteM5o1A7sQE7PvgaC1j1HgDAXkJUagQhS
+    $2a$04$AYPR70TyYUXN5A9Cl6wYn.ScDSGQYPwYgi.ZkBPvkI8SOQSrF.d.u
 
 
 ### Generating stronger hashes
