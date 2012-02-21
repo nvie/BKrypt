@@ -1,4 +1,8 @@
 import bcrypt
+from version import VERSION
+
+__author__ = 'Vincent Driessen <me@nvie.com>'
+__version__ = VERSION
 
 
 class Password(object):
