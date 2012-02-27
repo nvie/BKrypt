@@ -24,8 +24,13 @@ class Password(object):
     def __eq__(self, passwd):
         if not isinstance(passwd, basestring):
             raise ValueError('Can only compare Password to strings.')
-        hash = self.hash
-        return bcrypt.hashpw(passwd, hash) == hash
+        given_hash = self.hash
+        try:
+            real_hash = bcrypt.hashpw(passwd, given_hash)
+        except ValueError:
+            # In case of an invalid (non-BCrypt) hash, return False
+            return False
+        return real_hash == given_hash
 
 
 def hash_password(password, strengh=None):
