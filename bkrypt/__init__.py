@@ -32,6 +32,9 @@ class Password(object):
             return False
         return real_hash == given_hash
 
+    def __ne__(self, passwd):
+        return not self.__eq__(passwd)
+
 
 def hash_password(password, strengh=None):
     """Hashes the given password with the given BCrypt strenght and returns
